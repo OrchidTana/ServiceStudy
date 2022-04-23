@@ -17,34 +17,14 @@ int main() {
 	struct sockaddr_in addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(8765);
-	addr.sin_addr.s_addr = htonl(INADDR_ANY);
-	bind(sock_fd, (struct sockaddr*)&addr, sizeof(addr));
-
-	listen(sock_fd, 20);
-
-	struct sockaddr_in clicent_addr;
-	addr.sin_family = AF_INET;
-	addr.sin_port = htons(SERV_PORT);
-	addr.sin_addr.s_addr = htonl(INADDR_ANY);
-	socklen_t len = sizeof(addr);
-	clicent_fd = accept(sock_fd, (struct sockaddr*)&clicent_addr, &len);
-	if (clicent_fd == -1) {
-		perror("server accept error:");
-	}
-	printf("server, clicent address:%s, port:%d\n", 
-							inet_ntop(AF_INET, &clicent_addr.sin_addr.s_addr, clientip, 1024), 
-							ntohs(clicent_addr.sin_port));
+	inet_pton(AF_INET, "180.174.239.251", &(addr.sin_addr.s_addr));
+	connect(sock_fd, (const struct sockaddr*)(&addr), sizeof(addr));
 	int index = 10;
 	while (index--) {
-	char temp[1024];
-		int ret = read(clicent_fd, temp, 100);
-		printf("server receive:%s\n", temp);
-		for (int i = 0; i < ret; i++) {
-			temp[i] = temp[i] - 'a' + 'A';
-		}
-		write(clicent_fd, temp, ret);
+		char temp[8] = "abcdefg";
+		write(clicent_fd, temp, 8);
+	  read(clicent_fd, temp, 8);
 	}
-	close(clicent_fd);
 	close(sock_fd);
 
 
