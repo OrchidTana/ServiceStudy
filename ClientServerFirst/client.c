@@ -17,7 +17,7 @@ int main() {
 	struct sockaddr_in addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(8765);
-	inet_pton(AF_INET, "180.174.239.251", &(addr.sin_addr.s_addr));
+	inet_pton(AF_INET, "8.142.8.170", &(addr.sin_addr.s_addr));
 	connect(sock_fd, (const struct sockaddr*)(&addr), sizeof(addr));
 	int index = 10;
 	while (index--) {
