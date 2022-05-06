@@ -4,7 +4,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-#define SERV_PORT 8765
+#define SERV_PORT 3389
 
 int main() {
 	int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -16,7 +16,7 @@ int main() {
 
 	struct sockaddr_in addr;
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(8765);
+	addr.sin_port = htons(SERV_PORT);
 	addr.sin_addr.s_addr = htonl(INADDR_ANY);
 	bind(sock_fd, (struct sockaddr*)&addr, sizeof(addr));
 
