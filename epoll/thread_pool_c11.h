@@ -13,10 +13,7 @@
 #include<utility>
 #include<vector>
 
-
-
 namespace pool {
-
 
 	class ThreadGuard {
 
@@ -100,7 +97,6 @@ namespace pool {
 				return ret;
 			}
 
-
 		private:
 			ThreadPool(ThreadPool&&) = delete;
 			ThreadPool& operator=(ThreadPool&&) = delete;
@@ -119,12 +115,5 @@ namespace pool {
 
 };
 
-
-
-
-
-
-
-
-
 #endif
+
