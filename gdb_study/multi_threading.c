@@ -14,16 +14,14 @@ void *pth1_main(void *arg);
 void *pth2_main(void *arg);
 
 // main 函数
-int main(){
+int main() {
 	
-	if(pthread_create(&pthid1, NULL, pth1_main,(void*)0) != 0)
-	{
+	if (pthread_create(&pthid1, NULL, pth1_main,(void*)0) != 0) {
 		printf("pthread_create pthid1 failed.\n");
 		return -1;
 	}
 	
-	if(pthread_create(&pthid2, NULL, pth2_main,(void*)0) != 0)
-	{
+	if (pthread_create(&pthid2, NULL, pth2_main,(void*)0) != 0) {
 		printf("pthread_create pthid2 failed.\n");
 		return -1;
 	}
@@ -39,8 +37,7 @@ int main(){
 }
 
 // 第一个线程的主函数
-void *pth1_main(void * arg)
-{
+void *pth1_main(void * arg) {
 	for(x = 0; x < 100; ++x)
 	{
 		printf("x=%d\n", x);
@@ -49,8 +46,7 @@ void *pth1_main(void * arg)
 	pthread_exit(NULL);
 }
 
-void *pth2_main(void * arg)
-{
+void *pth2_main(void * arg) {
 	for(y = 0; y < 100; ++y)
 	{
 		printf("y=%d\n", y);
